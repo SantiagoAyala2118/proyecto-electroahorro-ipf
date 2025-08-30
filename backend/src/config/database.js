@@ -1,4 +1,9 @@
 import { Sequelize } from "sequelize";
+import { PersonModel } from "../models/person.model.js";
+import { UserModel } from "../models/user.model.js";
+import { ProfileModel } from "../models/profile.model.js";
+import { ApplianceModel } from "../models/appliance.model.js";
+import { UserApplianceModel } from "../models/user_appliance.model.js";
 import dotenv from "dotenv";
 dotenv.config({ path: "../.env" });
 
@@ -21,4 +26,9 @@ export const startDB = async () => {
   } catch (err) {
     console.error("No se ha podido conectar con la Base de datos", err);
   }
+  await PersonModel.sync(),
+    UserModel.sync(),
+    ProfileModel.sync(),
+    ApplianceModel.sync(),
+    UserApplianceModel.sync();
 };
