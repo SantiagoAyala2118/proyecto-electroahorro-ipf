@@ -1,7 +1,9 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
+import { UserModel } from "./user.model.js";
+import { ApplianceModel } from "./appliance.model.js";
 
-export const UserApplianceModel = sequelize.define("UserApplianceModel", {
+export const UserApplianceModel = sequelize.define("User_Appliance", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -9,4 +11,32 @@ export const UserApplianceModel = sequelize.define("UserApplianceModel", {
     allowNull: false,
     unique: true,
   },
+});
+
+//Relaciones
+
+//Hacia la tabla intermedia
+UserModel.belongsToMany(ApplianceModel, {
+  through: UserApplianceModel,
+  as: "users",
+  foreignKey: "user_id",
+  targetKey: "id",
+});
+
+ApplianceModel.belongsToMany(UserModel, {
+  through: UserApplianceModel,
+  as: "appliances",
+  foreignKey: "appliance_id",
+  targetKey: "id",
+});
+
+//Desde la tabla intermedia
+UserApplianceModel.belongsTo(UserModel, {
+  foreignKey: "user_id",
+  as: "User",
+});
+
+UserApplianceModel.belongsTo(ApplianceModel, {
+  foreignKey: "appliance_id",
+  as: "Appliance",
 });

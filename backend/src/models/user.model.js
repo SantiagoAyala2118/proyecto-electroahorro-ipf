@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
+import { PersonModel } from "./person.model.js";
 
 export const UserModel = sequelize.define("User", {
   username: {
@@ -16,4 +17,16 @@ export const UserModel = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+});
+
+//Relaciones
+UserModel.belongsTo(PersonModel, {
+  foreignKey: "person_id",
+  as: "person",
+  targetKey: "id",
+});
+
+PersonModel.hasOne(UserModel, {
+  foreignKey: "person_id",
+  sourceKey: "id",
 });
