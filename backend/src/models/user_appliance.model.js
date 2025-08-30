@@ -3,15 +3,22 @@ import { sequelize } from "../config/database.js";
 import { UserModel } from "./user.model.js";
 import { ApplianceModel } from "./appliance.model.js";
 
-export const UserApplianceModel = sequelize.define("User_Appliance", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false,
-    unique: true,
+export const UserApplianceModel = sequelize.define(
+  "User_Appliance",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+      unique: true,
+    },
   },
-});
+  {
+    createdAt: false,
+    updatedAt: false,
+  }
+);
 
 //Relaciones
 

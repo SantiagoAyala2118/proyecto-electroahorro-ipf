@@ -2,17 +2,24 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 import { UserModel } from "./user.model.js";
 
-export const ProfileModel = sequelize.define("Profile", {
-  picture: {
-    type: DataTypes.STRING,
-    allowNull: true,
-    defaultValue: "Foto en blanco",
+export const ProfileModel = sequelize.define(
+  "Profile",
+  {
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "Foto en blanco",
+    },
+    bio: {
+      type: DataTypes.STRING(200),
+      allowNull: true,
+    },
   },
-  bio: {
-    type: DataTypes.STRING(200),
-    allowNull: true,
-  },
-});
+  {
+    createdAt: false,
+    updatedAt: false,
+  }
+);
 
 //Relaciones
 ProfileModel.belongsTo(UserModel, {
@@ -24,4 +31,5 @@ ProfileModel.belongsTo(UserModel, {
 UserModel.hasOne(ProfileModel, {
   foreignKey: "user_id",
   sourceKey: "id",
+  as: "profile",
 });

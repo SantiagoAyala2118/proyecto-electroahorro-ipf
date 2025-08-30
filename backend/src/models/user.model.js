@@ -2,22 +2,29 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 import { PersonModel } from "./person.model.js";
 
-export const UserModel = sequelize.define("User", {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+export const UserModel = sequelize.define(
+  "User",
+  {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+  {
+    createdAt: false,
+    updatedAt: false,
+  }
+);
 
 //Relaciones
 UserModel.belongsTo(PersonModel, {
@@ -28,5 +35,6 @@ UserModel.belongsTo(PersonModel, {
 
 PersonModel.hasOne(UserModel, {
   foreignKey: "person_id",
+  as: "user",
   sourceKey: "id",
 });
