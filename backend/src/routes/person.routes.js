@@ -18,7 +18,7 @@ const personRouter = Router();
 
 //Crear una persona
 personRouter.post(
-  "/api/person",
+  "/signUp",
   createPersonValidations,
   applyValidations,
   createPerson

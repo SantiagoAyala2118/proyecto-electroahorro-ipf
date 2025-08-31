@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { applyValidations } from "../middlewares/validator.js";
 import { createUserValidations } from "../middlewares/validations/userValidations/createUser.validation.js";
-import { getOneUserValidations } from "../middlewares/validations/userValidations/deleteUser.validations.js";
+import { getOneUserValidations } from "../middlewares/validations/userValidations/getOneUser.validations.js";
 import { updateUserValidations } from "../middlewares/validations/userValidations/updateUser.validations.js";
 import { deleteUserValidations } from "../middlewares/validations/userValidations/deleteUser.validations.js";
 
@@ -18,18 +18,13 @@ const userRouter = Router();
 //Rutas
 
 //Crear un usuario
-userRouter.post(
-  "/api/user",
-  createUserValidations,
-  applyValidations,
-  createUser
-);
+userRouter.post("/login", createUserValidations, applyValidations, createUser);
 
 //Traer todos los usuarios
 userRouter.get("/api/users", getAllUsers);
 
 //Traer un usuario
-personRouter.get(
+userRouter.get(
   "/api/user/:id",
   getOneUserValidations,
   applyValidations,
