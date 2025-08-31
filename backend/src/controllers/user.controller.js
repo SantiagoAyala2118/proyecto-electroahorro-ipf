@@ -6,13 +6,13 @@ import { PersonModel } from "../models/person.model.js";
 export const createUser = async (req, res) => {
   try {
     const validatedData = matchedData(req);
-    const user = await UserModel.create({ validatedData });
+    const user = await UserModel.create(validatedData);
     return res.status(201).json({
       message: "User created succesfuly",
       user: user,
     });
   } catch (err) {
-    console.error("Server error while creating an user ");
+    console.error("Server error while creating an user", err);
     return res.status(500).json({
       message: "Server error while creating an user",
     });
