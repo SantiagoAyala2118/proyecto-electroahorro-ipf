@@ -1,7 +1,7 @@
 import { param } from "express-validator";
 import { UserModel } from "../../../models/user.model.js";
 
-export const getOneUserValidations = [
+export const deleteUserValidations = [
   param("id")
     .isInt({ gt: 0 })
     .withMessage("The id must be a number greater than 0")
