@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { PersonModel } from "../../../models/person.model";
+import { PersonModel } from "../../../models/person.model.js";
 
 export const createPersonValidations = [
   body("name")
@@ -28,9 +28,11 @@ export const createPersonValidations = [
     )
     .isLength({ min: 5, max: 10 })
     .withMessage("DNI must contain 8 digits")
-    .custom(async (dni) => {
+    .custom(async (dni, { req }) => {
       try {
-        const dniExisting = await PersonModel.findOne({ where: dni });
+        const dniExisting = await PersonModel.findOne({
+          where: { dni: req.body.dni },
+        });
         if (dniExisting) {
           return Promise.reject("DNI already exists in the DB");
         }
