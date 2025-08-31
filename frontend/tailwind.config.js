@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#0061ff", // Azul de caja Dropbox
+        primaryDark: "#0d2f4f", // Azul oscuro de caja Dropbox
+      },
+    },
   },
   plugins: [],
 };
