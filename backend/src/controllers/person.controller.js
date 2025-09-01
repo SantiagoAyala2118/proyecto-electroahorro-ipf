@@ -9,7 +9,7 @@ export const createPerson = async (req, res) => {
     const person = await PersonModel.create(validatedData);
     return res.status(201).json({
       message: "Person created",
-      person: person,
+      person,
     });
   } catch (err) {
     console.error("Server error while creating a person", err);
@@ -33,10 +33,10 @@ export const getAllPeople = async (req, res) => {
           attributes: {
             exclude: ["password"],
           },
-        },
-        {
-          model: ProfileModel,
-          as: "profile",
+          include: {
+            model: ProfileModel,
+            as: "profile",
+          },
         },
       ],
     });
@@ -54,7 +54,7 @@ export const getAllPeople = async (req, res) => {
 //Get a person
 export const getAPerson = async (req, res) => {
   try {
-    const person = await PersonModel.findAll({
+    const person = await PersonModel.findByPk(req.params.id, {
       attributes: {
         exclude: ["dni"],
       },
