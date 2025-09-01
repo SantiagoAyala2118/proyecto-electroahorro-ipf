@@ -54,7 +54,7 @@ export const getAllUsers = async (req, res) => {
 //Get one user
 export const getOneUser = async (req, res) => {
   try {
-    const user = await UserModel.findOne({
+    const user = await UserModel.findByPk(req.params.id, {
       attributes: {
         exclude: ["password", "person_id"],
       },
