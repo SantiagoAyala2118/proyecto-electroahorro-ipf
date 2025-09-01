@@ -13,6 +13,7 @@ export const ProfileModel = sequelize.define(
     bio: {
       type: DataTypes.STRING(200),
       allowNull: true,
+      defaultValue: "Una biografía cualquiera",
     },
   },
   {
