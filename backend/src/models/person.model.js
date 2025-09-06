@@ -4,22 +4,14 @@ import { DataTypes } from "sequelize";
 export const PersonModel = sequelize.define(
   "Person",
   {
-    name: {
+    fullname: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    lastname: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    dni: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
     },
   },
   {
     createdAt: false,
     updatedAt: false,
+    paranoid: true,
   }
 );
