@@ -36,15 +36,20 @@ export const getAllProfiles = async (req, res) => {
 //Get one profile
 export const getOneProfile = async (req, res) => {
   try {
-    const profile = await ProfileModel.findByPk(req.params.id, {
-      include: {
-        model: UserModel,
-        as: "user",
-        attributes: {
-          exclude: ["password"],
+    const userLogged = req.userLogged;
+
+    const profile = await ProfileModel.findOne(
+      { where: { user_id: userLogged.id } },
+      {
+        include: {
+          model: UserModel,
+          as: "user",
+          attributes: {
+            exclude: ["password"],
+          },
         },
-      },
-    });
+      }
+    );
     return res.status(200).json({
       message: "Profile founded",
       profile: profile,
@@ -60,6 +65,8 @@ export const getOneProfile = async (req, res) => {
 //Update a profile
 export const updateProfile = async (req, res) => {
   try {
+    const userLogged = req.userLogged;
+
     const validatedData = matchedData(req, { locations: ["body"] });
     if (Object.keys(validatedData) === 0) {
       return res.status(400).json({
@@ -67,7 +74,7 @@ export const updateProfile = async (req, res) => {
       });
     }
     await ProfileModel.update(validatedData, {
-      where: { id: req.params.id },
+      where: { user_id: userLogged.id },
     });
     return res.status(200).json({
       message: "Profile updated",
