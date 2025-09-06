@@ -2,24 +2,6 @@ import { matchedData } from "express-validator";
 import { ProfileModel } from "../models/profile.model.js";
 import { UserModel } from "../models/user.model.js";
 
-//Create profile
-export const createProfile = async (req, res) => {
-  try {
-    const validatedData = matchedData(req);
-
-    const profile = await ProfileModel.create(validatedData);
-    return res.status(201).json({
-      message: "Profile created",
-      profile: profile,
-    });
-  } catch (err) {
-    console.error("Server error while creating a profile", err);
-    return res
-      .status(500)
-      .json({ message: "Server error while creating a profile" });
-  }
-};
-
 //Get all profiles
 export const getAllProfiles = async (req, res) => {
   try {

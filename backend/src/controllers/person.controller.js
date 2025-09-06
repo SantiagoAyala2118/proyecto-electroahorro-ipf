@@ -2,22 +2,6 @@ import { PersonModel } from "../models/person.model.js";
 import { matchedData } from "express-validator";
 import { UserModel } from "../models/user.model.js";
 import { ProfileModel } from "../models/profile.model.js";
-//Create a person
-export const createPerson = async (req, res) => {
-  try {
-    const validatedData = matchedData(req);
-    const person = await PersonModel.create(validatedData);
-    return res.status(201).json({
-      message: "Person created",
-      person,
-    });
-  } catch (err) {
-    console.error("Server error while creating a person", err);
-    return res.status(500).json({
-      msg: "Server error while creating a person",
-    });
-  }
-};
 
 //Get all people
 export const getAllPeople = async (req, res) => {
