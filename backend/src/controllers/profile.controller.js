@@ -2,36 +2,36 @@ import { matchedData } from "express-validator";
 import { ProfileModel } from "../models/profile.model.js";
 import { UserModel } from "../models/user.model.js";
 
-//Get all profiles
-export const getAllProfiles = async (req, res) => {
-  try {
-    const profiles = await ProfileModel.findAll({
-      include: {
-        model: UserModel,
-        as: "user",
-        attributes: {
-          exclude: ["password"],
-        },
-      },
-    });
+// //Get all profiles
+// export const getAllProfiles = async (req, res) => {
+//   try {
+//     const profiles = await ProfileModel.findAll({
+//       include: {
+//         model: UserModel,
+//         as: "user",
+//         attributes: {
+//           exclude: ["password"],
+//         },
+//       },
+//     });
 
-    if (!profiles) {
-      return res.status(400).json({
-        mesage: "There are no profiles in the DB",
-      });
-    }
+//     if (!profiles) {
+//       return res.status(400).json({
+//         mesage: "There are no profiles in the DB",
+//       });
+//     }
 
-    return res.status(200).json({
-      message: "Profiles founded",
-      profiles: profiles,
-    });
-  } catch (err) {
-    console.error("Server error while getting all the profiles", err);
-    return res.status(500).json({
-      message: "Server error while getting all the profiles",
-    });
-  }
-};
+//     return res.status(200).json({
+//       message: "Profiles founded",
+//       profiles: profiles,
+//     });
+//   } catch (err) {
+//     console.error("Server error while getting all the profiles", err);
+//     return res.status(500).json({
+//       message: "Server error while getting all the profiles",
+//     });
+//   }
+// };
 
 //Get one profile
 export const getOneProfile = async (req, res) => {
@@ -87,17 +87,17 @@ export const updateProfile = async (req, res) => {
   }
 };
 
-//Delete a profile
-export const deleteProfile = async (req, res) => {
-  try {
-    await ProfileModel.destroy({ where: { id: req.params.id } });
-    return res.status(200).json({
-      message: "Profile deleted",
-    });
-  } catch (err) {
-    console.error("Server error while deleting a profile", err);
-    return res.status(500).json({
-      message: "Server error while deleting a prifile",
-    });
-  }
-};
+// //Delete a profile
+// export const deleteProfile = async (req, res) => {
+//   try {
+//     await ProfileModel.destroy({ where: { id: req.params.id } });
+//     return res.status(200).json({
+//       message: "Profile deleted",
+//     });
+//   } catch (err) {
+//     console.error("Server error while deleting a profile", err);
+//     return res.status(500).json({
+//       message: "Server error while deleting a prifile",
+//     });
+//   }
+// };
