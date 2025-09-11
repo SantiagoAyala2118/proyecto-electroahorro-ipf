@@ -44,3 +44,5 @@ profileRouter.delete(
   applyValidations,
   deletUser
 );
+
+export default profileRouter;
