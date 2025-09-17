@@ -3,13 +3,17 @@ import { matchedData } from "express-validator";
 import { UserApplianceModel } from "../models/user_appliance.model.js";
 
 export const createAppliance = async (req, res) => {
+  const { nombre, marca, modelo, potencia, consumo_promedio, descripcion } = req.body;
   try {
     const userLogged = req.userLogged;
 
-    const validatedData = matchedData(req);
+    // const validatedData = matchedData(req);
+    // console.log('ACA ESTA EL VALIDATED DATA',validatedData)
 
     //CREO/AÑADO UN ELECTRODOMÉSTICO
-    const appliance = await ApplianceModel.create(validatedData);
+    const appliance = await ApplianceModel.create({
+      nombre, marca, modelo, potencia, consumo_promedio, descripcion
+    });
 
     //AUTOMÁTICAMENTE CREO UN REGISTRO EN LA TABLA INTERMEDIA EN DONDE RELACIONO EL ELECTRODOMÉSTICO CON EL USUARO
     await UserApplianceModel.create({
