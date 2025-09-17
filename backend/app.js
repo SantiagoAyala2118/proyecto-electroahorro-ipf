@@ -6,6 +6,7 @@ dotenv.config({ path: "../.env" });
 //-----------------------------------------RUTAS
 import authRouter from './src/routes/auth.routes.js';
 import profileRouter from './src/routes/profile.routes.js';
+import applianceRouter from './src/routes/appliance.routes.js';
 
 import { startDB } from "./src/config/db.js";
 startDB();
@@ -13,6 +14,7 @@ startDB();
 const app = express();
 const PORT = process.env.PORT;
 
+//-----------------MIDDLEWARES
 app.use(express.json());
 app.use(
   cors({
@@ -23,8 +25,10 @@ app.use(
 );
 app.use(cookieParser());
 
-app.use("/", authRouter, profileRouter);
+//-------------------RUTAS
+app.use("/", authRouter, profileRouter, applianceRouter);
 
+//---------------LEVANTAMIENTO DE SERVIDOR
 app.listen(PORT, () => {
   console.log(`Escuchando en el puerto: http://localhost:${PORT}`);
 });
