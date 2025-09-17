@@ -13,8 +13,9 @@ const applianceRouter = Router();
 //CREAR ELECTRODOMESTICO
 applianceRouter.post('/api/appliance',
     authMiddleware,
-    //  createApplianceValidations,
-    //   applyValidations,
-       createAppliance)
+    createApplianceValidations,
+    applyValidations,
+    createAppliance
+)
 
 export default applianceRouter;
