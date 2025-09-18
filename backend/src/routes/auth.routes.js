@@ -10,7 +10,7 @@ const authRouter = Router();
 
 //Rregistrarse
 authRouter.post(
-  "/api/auth/registro",
+  "/api/auth/register",
   createPersonValidations,
   applyValidations,
   register
