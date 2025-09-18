@@ -50,27 +50,27 @@ export const createPersonValidations = [
     .withMessage(
       "The password must contain at leas 8 characters, one number, one sepecial character, capital and lower case"
     ),
-  body("confirm_password")
-    .trim()
-    .notEmpty()
-    .withMessage("The confirm_password field cannot be empty")
-    .isString()
-    .withMessage("The confirm_password field must be a string")
-    .custom(async (confirm_password, { req }) => {
-      try {
-        if (req.body.confirm_password !== req.body.password) {
-          return Promise.reject(
-            "The password and the confirmation password are different"
-          );
-        }
-      } catch (err) {
-        console.error(
-          "Error checking the coincidens between the password and the confirmation of the password",
-          err
-        );
-        return Promise.reject(
-          "Error checking the coincidens between the password and the confirmation of the password"
-        );
-      }
-    }),
+  // body("confirm_password")
+  //   .trim()
+  //   .notEmpty()
+  //   .withMessage("The confirm_password field cannot be empty")
+  //   .isString()
+  //   .withMessage("The confirm_password field must be a string")
+  //   .custom(async (confirm_password, { req }) => {
+  //     try {
+  //       if (req.body.confirm_password !== req.body.password) {
+  //         return Promise.reject(
+  //           "The password and the confirmation password are different"
+  //         );
+  //       }
+  //     } catch (err) {
+  //       console.error(
+  //         "Error checking the coincidens between the password and the confirmation of the password",
+  //         err
+  //       );
+  //       return Promise.reject(
+  //         "Error checking the coincidens between the password and the confirmation of the password"
+  //       );
+  //     }
+  //   }),
 ];
