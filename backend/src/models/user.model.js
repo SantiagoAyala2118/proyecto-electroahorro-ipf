@@ -14,10 +14,6 @@ export const UserModel = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    confirm_password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   },
   {
     createdAt: false,

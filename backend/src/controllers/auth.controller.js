@@ -1,6 +1,7 @@
 import { matchedData } from "express-validator";
 import { PersonModel } from "../models/person.model.js";
 import { UserModel } from "../models/user.model.js";
+import { ProfileModel } from "../models/profile.model.js";
 import { comparePassword, hashPassword } from "../helpers/bcrypt.helper.js";
 import { generateToken } from "../helpers/jwt.helper.js";
 
@@ -9,17 +10,17 @@ export const register = async (req, res) => {
     // const { fullname, email, password, confirm_password } = req.body;
 
     const validatedData = matchedData(req);
+    delete validatedData.confirm_password;
 
-    const hashedPassword = hashPassword(validatedData.password);
+    const hashedPassword = await hashPassword(validatedData.password);
 
     const person = await PersonModel.create({
-      fullname: validatedData.fullname,
+      full_name: validatedData.full_name,
     });
 
     await UserModel.create({
       email: validatedData.email,
       password: hashedPassword,
-      confirm_password: hashedPassword,
       user_id: person.id,
     });
 

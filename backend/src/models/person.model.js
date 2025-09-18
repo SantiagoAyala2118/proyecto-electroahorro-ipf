@@ -4,7 +4,7 @@ import { DataTypes } from "sequelize";
 export const PersonModel = sequelize.define(
   "Person",
   {
-    fullname: {
+    full_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },

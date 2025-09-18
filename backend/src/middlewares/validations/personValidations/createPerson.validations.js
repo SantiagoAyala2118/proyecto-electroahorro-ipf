@@ -2,7 +2,7 @@ import { body } from "express-validator";
 import { UserModel } from "../../../models/user.model.js";
 
 export const createPersonValidations = [
-  body("fullname")
+  body("full_name")
     .trim()
     .notEmpty()
     .withMessage("The fullname cannot be empty")
