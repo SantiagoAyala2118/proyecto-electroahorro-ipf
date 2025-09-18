@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
 type FormData = {
-  fullName: string;
+  full_name: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -18,7 +18,7 @@ const Registro = () => {
   const onSubmit = async (data: FormData) => {
     console.log(data);
 
-    const response = await fetch("http://192.168.137.1:4100/api/auth/register", {
+    const response = await fetch("http://localhost:4000/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,11 +55,13 @@ const Registro = () => {
             type="text"
             placeholder="Introduce tu nombre completo"
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-            {...register("fullName", { required: "Este campo es obligatorio" })}
+            {...register("full_name", {
+              required: "Este campo es obligatorio",
+            })}
           />
-          {errors.fullName && (
+          {errors.full_name && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.fullName.message}
+              {errors.full_name.message}
             </p>
           )}
         </div>

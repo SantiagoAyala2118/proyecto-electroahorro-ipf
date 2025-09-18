@@ -43,13 +43,13 @@ export const createPersonValidations = [
     .notEmpty()
     .withMessage("The password cannot be empty")
     .isString()
-    .withMessage("The password must be a string")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&._-])[A-Za-z\d@$!%*?&._-]{8,}$/
-    )
-    .withMessage(
-      "The password must contain at leas 8 characters, one number, one sepecial character, capital and lower case"
-    ),
+    .withMessage("The password must be a string"),
+  // .matches(
+  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&._-])[A-Za-z\d@$!%*?&._-]{8,}$/
+  // )
+  // .withMessage(
+  //   "The password must contain at leas 8 characters, one number, one sepecial character, capital and lower case"
+  // ),
   // body("confirm_password")
   //   .trim()
   //   .notEmpty()

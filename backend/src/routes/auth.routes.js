@@ -10,16 +10,16 @@ const authRouter = Router();
 
 //Rregistrarse
 authRouter.post(
-  "/api/auth/register",
+  "/auth/register",
   createPersonValidations,
   applyValidations,
   register
 );
 
 //Loguearse
-authRouter.post("/api/auth/login", login);
+authRouter.post("/auth/login", login);
 
 //Desloguearse (cerrar sesión)
-authRouter.post("/api/auth/logout", authMiddleware, logout);
+authRouter.post("/auth/logout", authMiddleware, logout);
 
 export default authRouter;

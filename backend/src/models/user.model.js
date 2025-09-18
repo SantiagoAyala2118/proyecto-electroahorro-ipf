@@ -12,7 +12,7 @@ export const UserModel = sequelize.define(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   {
