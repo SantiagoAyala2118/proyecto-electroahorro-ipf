@@ -1,4 +1,6 @@
 import { Router } from "express";
+
+//-------------------------------------------------------------CONTROLADORES
 import { login, logout, register } from "../controllers/auth.controller.js";
 
 //-------------------------------------------------------------MIDDLEWARES
