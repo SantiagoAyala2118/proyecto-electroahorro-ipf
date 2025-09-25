@@ -6,7 +6,7 @@ export const updateUser = async (req, res) => {
   try {
     const validatedData = matchedData(req, { locations: ["body"] });
 
-    if (Object.keys(validatedData) === 0) {
+    if (Object.keys(validatedData).length === 0) {
       return res.status(400).json({
         message: "You did not send anything to update",
       });
