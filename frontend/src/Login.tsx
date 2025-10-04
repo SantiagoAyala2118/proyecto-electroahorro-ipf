@@ -1,8 +1,42 @@
+import { useNavigate, Link } from "react-router-dom";
+import { router } from "./routes/index.tsx";
+
 const Login = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí iría la lógica de autenticación
-    console.log("Formulario enviado");
+
+    // Capturamos los valores de los campos del formulario
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    // * Fetch para contactarse con la API
+    try {
+      // Enviamos los datos al backend
+      const response = await fetch("http://localhost:4000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Inicio de sesión exitoso:", data);
+
+        // ✅ Redirige al dashboard o App principal
+        navigate("/app");
+      } else {
+        alert("Email o contraseña incorrectos");
+      }
+    } catch (error) {
+      console.error("Error en la conexión:", error);
+      alert("Hubo un problema al iniciar sesión");
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -71,6 +105,7 @@ const Login = () => {
             <div className="flex-grow border-t border-gray-300"></div>
           </div>
 
+          {/* ✅ FORMULARIO con names agregados */}
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label
@@ -82,6 +117,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
+                name="email" // 👈 agregado
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-dropboxBlue focus:border-transparent"
                 placeholder="Introduce tu email"
                 required
@@ -98,6 +134,7 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
+                name="password" // 👈 agregado
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-dropboxBlue focus:border-transparent"
                 placeholder="Introduce tu contraseña"
                 required
@@ -134,9 +171,13 @@ const Login = () => {
             </a>
             <p className="mt-4 text-sm text-gray-600">
               ¿No tienes una cuenta?
-              <a href="#" className="text-dropboxBlue hover:underline ml-1">
+              {/* ✅ Link cambiado para usar React Router */}
+              <Link
+                to="/register"
+                className="text-dropboxBlue hover:underline ml-1"
+              >
                 Regístrate
-              </a>
+              </Link>
             </p>
           </div>
         </div>
