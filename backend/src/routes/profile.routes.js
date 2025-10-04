@@ -7,9 +7,9 @@ import {
 import { updateUser, deletUser } from "../controllers/user.controller.js";
 
 //---------------------------------MIDDLEWARES
-import { updateProfileValidations } from "../middlewares/validations/profileValidations/updateProfile.validations.js";
-import { updateUserValidations } from "../middlewares/validations/userValidations/updateUser.validations.js";
-import { deleteUserValidations } from "../middlewares/validations/userValidations/deleteUser.validations.js";
+import { updateProfileValidations } from "../middlewares/validations/profile.validations.js";
+import { updateUserValidations } from "../middlewares/validations/user.validations.js";
+import { deleteUserValidations } from "../middlewares/validations/user.validations.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { applyValidations } from "../middlewares/validator.js";
 

@@ -6,7 +6,7 @@ import { login, logout, register } from "../controllers/auth.controller.js";
 //-------------------------------------------------------------MIDDLEWARES
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { applyValidations } from "../middlewares/validator.js";
-import { createPersonValidations } from "../middlewares/validations/personValidations/createPerson.validations.js";
+import { createPersonValidations } from "../middlewares/validations/auth.validations.js";
 
 const authRouter = Router();
 

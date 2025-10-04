@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { ApplianceModel } from "../../../models/appliance.model.js";
+import { ApplianceModel } from "../../models/appliance.model.js";
 
 export const createApplianceValidations = [
   body("nombre")

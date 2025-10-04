@@ -10,7 +10,7 @@ import {
 } from "../controllers/appliance.controller.js";
 
 //--------------------------MIDDLEWARES
-import { createApplianceValidations } from "../middlewares/validations/applianceValidations/createAppliance.validations.js";
+import { createApplianceValidations } from "../middlewares/validations/appliance.validations.js";
 import { applyValidations } from "../middlewares/validator.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
