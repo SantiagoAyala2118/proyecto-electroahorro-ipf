@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useNavigate, Link } from "react-router-dom";
 
 type FormData = {
   full_name: string;
@@ -9,6 +10,8 @@ type FormData = {
 };
 
 const Registro = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -29,6 +32,8 @@ const Registro = () => {
     if (response.ok) {
       const responseData = await response.json();
       console.log("Registro exitoso:", responseData);
+
+      navigate("/login");
     } else {
       // Manejar errores de registro
       console.error("Error en el registro:", response.statusText);
@@ -171,12 +176,12 @@ const Registro = () => {
       <div className="text-center mt-6">
         <p className="text-gray-600 text-sm">
           ¿Ya tienes una cuenta?
-          <a
-            href="./index.html"
+          <Link
+            to="/login"
             className="text-blue-600 hover:text-blue-500 font-semibold ml-1"
           >
             Inicia sesión
-          </a>
+          </Link>
         </p>
       </div>
       <div className="text-center mt-8 pt-6 border-t border-gray-200">
