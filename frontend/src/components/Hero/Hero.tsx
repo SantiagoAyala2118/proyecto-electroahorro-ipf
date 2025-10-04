@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import img1 from '../../assets/concientizacion1.jpg'
 import img2 from '../../assets/concientizacion2.jpg'
 import img3 from '../../assets/concientizacion3.jpg'
@@ -47,7 +47,7 @@ const Hero = () => {
   }, [])
 
   // Navegación manual
-  const goToSlide = (index) => setCurrentSlide(index)
+  const goToSlide = (index: number) => setCurrentSlide(index)
   const goToNext = () => setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length)
   const goToPrev = () => setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length)
 
@@ -76,7 +76,7 @@ const Hero = () => {
               <p className="text-lg md:text-xl text-gray-200 mt-2 max-w-2xl">
                 {slide.description}
               </p>
-              <a href='/ahorro' className="mt-6 px-6 py-2 bg-blue-950 hover:bg-blue-400 text-white rounded-lg shadow-lg transition">
+              <a href='/ahorros' className="mt-6 px-6 py-2 bg-blue-950 hover:bg-blue-400 text-white rounded-lg shadow-lg transition">
                 Ver
               </a>
             </div>
