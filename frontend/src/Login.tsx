@@ -1,5 +1,4 @@
 import { useNavigate, Link } from "react-router-dom";
-import { router } from "./routes/index.tsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -172,10 +171,7 @@ const Login = () => {
             <p className="mt-4 text-sm text-gray-600">
               ¿No tienes una cuenta?
               {/* ✅ Link cambiado para usar React Router */}
-              <Link
-                to="/register"
-                className="text-dropboxBlue hover:underline ml-1"
-              >
+              <Link to="/" className="text-dropboxBlue hover:underline ml-1">
                 Regístrate
               </Link>
             </p>
