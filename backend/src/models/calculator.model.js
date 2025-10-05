@@ -38,4 +38,4 @@ UserModel.hasMany(CalculationModel, {
   onDelete: "CASCADE",
 });
 
-export default Calculation;
+export default CalculationModel;
