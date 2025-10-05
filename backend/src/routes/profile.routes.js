@@ -1,12 +1,13 @@
 import { Router } from "express";
 
+//* -----------------------------CONTROLADORES
 import {
   getOneProfile,
   updateProfile,
 } from "../controllers/profile.controller.js";
 import { updateUser, deletUser } from "../controllers/user.controller.js";
 
-//---------------------------------MIDDLEWARES
+//*---------------------------------MIDDLEWARES
 import { updateProfileValidations } from "../middlewares/validations/profile.validations.js";
 import { updateUserValidations } from "../middlewares/validations/user.validations.js";
 import { deleteUserValidations } from "../middlewares/validations/user.validations.js";
@@ -15,10 +16,10 @@ import { applyValidations } from "../middlewares/validator.js";
 
 const profileRouter = Router();
 
-//Ver el perfil propio
+//TODO Ver el perfil propio
 profileRouter.get("/api/profile", authMiddleware, getOneProfile);
 
-//Actualizar el perfil
+//TODO Actualizar el perfil
 profileRouter.put(
   "/api/profile",
   authMiddleware,
@@ -27,7 +28,7 @@ profileRouter.put(
   updateProfile
 );
 
-//Actualizar el usuario
+//TODO Actualizar el usuario
 profileRouter.put(
   "/api/profile/user",
   authMiddleware,
@@ -36,7 +37,7 @@ profileRouter.put(
   updateUser
 );
 
-//Eliminar el usuario
+//TODO Eliminar el usuario
 profileRouter.delete(
   "/api/profile/user",
   authMiddleware,

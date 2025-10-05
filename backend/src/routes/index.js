@@ -1,23 +1,27 @@
 import { Router } from "express";
 
-//RUTAS
+//* RUTAS
 import userRouter from "./user.routes.js";
 import profileRouter from "./profile.routes.js";
 import applianceRouter from "./appliance.routes.js";
 import authRouter from "./auth.routes.js";
+import calcRouter from "./calculator.routes.js";
 
 const routes = Router();
 
-//AUTH
+//TODO AUTH
 routes.use(authRouter);
 
-//USER
+//TODO USER
 routes.use(userRouter);
 
-//PROFILE
+//TODO PROFILE
 routes.use(profileRouter);
 
-//APPLIANCE
+//TODO APPLIANCE
 routes.use(applianceRouter);
+
+//TODO CALCULATOR
+routes.use(calcRouter);
 
 export default routes;

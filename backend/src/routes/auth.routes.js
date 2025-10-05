@@ -1,16 +1,16 @@
 import { Router } from "express";
 
-//-------------------------------------------------------------CONTROLADORES
+//* -------------------------------------------------------------CONTROLADORES
 import { login, logout, register } from "../controllers/auth.controller.js";
 
-//-------------------------------------------------------------MIDDLEWARES
+//* -------------------------------------------------------------MIDDLEWARES
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { applyValidations } from "../middlewares/validator.js";
 import { createPersonValidations } from "../middlewares/validations/auth.validations.js";
 
 const authRouter = Router();
 
-//Rregistrarse
+//TODO Rregistrarse
 authRouter.post(
   "/auth/register",
   createPersonValidations,
@@ -18,10 +18,10 @@ authRouter.post(
   register
 );
 
-//Loguearse
+//TODO Loguearse
 authRouter.post("/auth/login", login);
 
-//Desloguearse (cerrar sesión)
+//TODO Desloguearse (cerrar sesión)
 authRouter.post("/auth/logout", authMiddleware, logout);
 
 export default authRouter;

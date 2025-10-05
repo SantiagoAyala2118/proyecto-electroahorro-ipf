@@ -1,6 +1,6 @@
 import Router from "express";
 
-//--------------------------CONTROLADORES
+//* ------------------------CONTROLADORES
 import {
   createAppliance,
   deleteAppliance,
@@ -9,14 +9,14 @@ import {
   updateAppliance,
 } from "../controllers/appliance.controller.js";
 
-//--------------------------MIDDLEWARES
+//* --------------------------MIDDLEWARES
 import { createApplianceValidations } from "../middlewares/validations/appliance.validations.js";
 import { applyValidations } from "../middlewares/validator.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const applianceRouter = Router();
 
-//CREAR ELECTRODOMESTICO
+//TODO CREAR ELECTRODOMESTICO
 applianceRouter.post(
   "/appliance",
   authMiddleware,
@@ -25,12 +25,16 @@ applianceRouter.post(
   createAppliance
 );
 
+// TODO TRAER TODOS LOS ELECTRODOMÉSTICOS
 applianceRouter.get("/appliance", authMiddleware, getAllApliances);
 
+// TODO TRAER UN SOLO ELECTRODOMÉSTICO
 applianceRouter.get("/appliance/:id", authMiddleware, getAppliance);
 
+// TODO ACTUALIZAR UN ELECTRODOMÉSTICO
 applianceRouter.put("/appliance/:id", authMiddleware, updateAppliance);
 
+// TODO BORRAR UN ELECTRODOMÉSTICO
 applianceRouter.delete("/appliance/:id", authMiddleware, deleteAppliance);
 
 export default applianceRouter;
