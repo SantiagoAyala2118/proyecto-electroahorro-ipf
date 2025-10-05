@@ -9,7 +9,7 @@ export const CalculationModel = sequelize.define(
       type: DataTypes.FLOAT,
       allowNull: false, // watts
     },
-    hoursPerDay: {
+    hours_per_day: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
@@ -17,7 +17,7 @@ export const CalculationModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    totalConsumption: {
+    total_consumption: {
       type: DataTypes.FLOAT,
       allowNull: false, // en kWh
     },
