@@ -21,7 +21,7 @@ export const register = async (req, res) => {
     await UserModel.create({
       email: validatedData.email,
       password: hashedPassword,
-      user_id: person.id,
+      person_id: person.id,
     });
 
     await ProfileModel.create(validatedData);

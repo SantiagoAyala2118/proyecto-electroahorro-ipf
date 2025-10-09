@@ -1,21 +1,40 @@
-import Router from 'express'
+import Router from "express";
 
-//--------------------------CONTROLADORES
-import { createAppliance } from '../controllers/appliance.controller.js';
+//* ------------------------CONTROLADORES
+import {
+  createAppliance,
+  deleteAppliance,
+  getAllApliances,
+  getAppliance,
+  updateAppliance,
+} from "../controllers/appliance.controller.js";
 
-//--------------------------MIDDLEWARES
-import { createApplianceValidations } from '../middlewares/validations/applianceValidations/createAppliance.validations.js';
-import { applyValidations } from '../middlewares/validator.js';
-import { authMiddleware } from '../middlewares/authMiddleware.js';
+//* --------------------------MIDDLEWARES
+import { createApplianceValidations } from "../middlewares/validations/appliance.validations.js";
+import { applyValidations } from "../middlewares/validator.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const applianceRouter = Router();
 
-//CREAR ELECTRODOMESTICO
-applianceRouter.post('/api/appliance',
-    authMiddleware,
-    createApplianceValidations,
-    applyValidations,
-    createAppliance
-)
+//TODO CREAR ELECTRODOMESTICO
+applianceRouter.post(
+  "/appliance",
+  authMiddleware,
+  createApplianceValidations,
+  applyValidations,
+  createAppliance
+);
+
+// TODO TRAER TODOS LOS ELECTRODOMÉSTICOS
+applianceRouter.get("/appliance", authMiddleware, getAllApliances);
+
+// TODO TRAER UN SOLO ELECTRODOMÉSTICO
+applianceRouter.get("/appliance/:id", authMiddleware, getAppliance);
+
+// TODO ACTUALIZAR UN ELECTRODOMÉSTICO
+applianceRouter.put("/appliance/:id", authMiddleware, updateAppliance);
+
+// TODO BORRAR UN ELECTRODOMÉSTICO
+applianceRouter.delete("/appliance/:id", authMiddleware, deleteAppliance);
 
 export default applianceRouter;
