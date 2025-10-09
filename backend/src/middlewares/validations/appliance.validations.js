@@ -9,7 +9,7 @@ export const createApplianceValidations = [
     .isString()
     .withMessage("El nombre debe ser un string")
     .matches(
-      /^(?=.*[A-ZÁÉÍÓÚÑ])(?=.*[a-záéíóúñ])[A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+)*$/
+      /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+)*$/
     )
     .withMessage(
       "El nombre debe contener al menos una minúscula, una mayúscula, y estar separado por espacios"
@@ -35,7 +35,7 @@ export const createApplianceValidations = [
     .isString()
     .withMessage("La marca debe ser un string")
     .matches(
-      /^(?=.*[A-ZÁÉÍÓÚÑ])(?=.*[a-záéíóúñ])[A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+)*$/
+      /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+)*$/
     )
     .withMessage(
       "La marca debe contener al menos una minúscula, una mayúscula, y estar separado por espacios"
@@ -46,9 +46,7 @@ export const createApplianceValidations = [
     .withMessage("El modelo no puede estar vacío")
     .isString()
     .withMessage("El modelo debe ser un string")
-    .matches(
-      /^(?=.*[A-ZÁÉÍÓÚÑ])(?=.*[a-záéíóúñ])[A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+)*$/
-    )
+    .matches(/^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ0-9]+)*$/)
     .withMessage(
       "El modelo debe contener al menos una minúscula, una mayúscula, y estar separado por espacios"
     ),
