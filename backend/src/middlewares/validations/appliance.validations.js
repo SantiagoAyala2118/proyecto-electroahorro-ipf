@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { ApplianceModel } from "../../../models/appliance.model.js";
+import { ApplianceModel } from "../../models/appliance.model.js";
 
 export const createApplianceValidations = [
   body("nombre")
@@ -28,7 +28,7 @@ export const createApplianceValidations = [
         return Promise.reject("Error verificando la disponibilidad del nombre");
       }
     }),
-  body('marca')
+  body("marca")
     .trim()
     .notEmpty()
     .withMessage("La marca no puede estar vacía")
@@ -40,7 +40,7 @@ export const createApplianceValidations = [
     .withMessage(
       "La marca debe contener al menos una minúscula, una mayúscula, y estar separado por espacios"
     ),
-  body('modelo')
+  body("modelo")
     .trim()
     .notEmpty()
     .withMessage("El modelo no puede estar vacío")
@@ -52,7 +52,7 @@ export const createApplianceValidations = [
     .withMessage(
       "El modelo debe contener al menos una minúscula, una mayúscula, y estar separado por espacios"
     ),
-  body('potencia')
+  body("potencia")
     .trim()
     .notEmpty()
     .withMessage("La potencia no puede estar")
@@ -60,34 +60,40 @@ export const createApplianceValidations = [
       const potenciaEnWatts = Number(potencia);
 
       if (isNaN(potenciaEnWatts)) {
-        throw new Error('La potencia debe ser un numero, debido a que se trabaja con watts')
+        throw new Error(
+          "La potencia debe ser un numero, debido a que se trabaja con watts"
+        );
       }
 
       if (potenciaEnWatts <= 0) {
-        throw new Error('La potencia debe ser un numero mayor a cero')
+        throw new Error("La potencia debe ser un numero mayor a cero");
       }
 
       return true;
     }),
-  body('consumo_promedio')
+  body("consumo_promedio")
     .trim()
     .custom((consumoPromedio) => {
       const consumoPromedioEnKwh = Number(consumoPromedio);
 
       if (isNaN(consumoPromedioEnKwh)) {
-        throw new Error('El consumo promedio debe ser un numero, debido a que se trabaja con Kwh (kilowatts por hora)')
+        throw new Error(
+          "El consumo promedio debe ser un numero, debido a que se trabaja con Kwh (kilowatts por hora)"
+        );
       }
 
       if (consumoPromedioEnKwh <= 0) {
-        throw new Error('El consumo promedio debe ser un numero mayor a cero')
+        throw new Error("El consumo promedio debe ser un numero mayor a cero");
       }
 
       return true;
     }),
-  body('descripcion')
+  body("descripcion")
     .trim()
     .isString()
-    .withMessage('La descripcion debe ser un string')
+    .withMessage("La descripcion debe ser un string")
     .isLength({ min: 10, max: 200 })
-    .withMessage('La descripcion debe tener entre 10 y 200 caracteres')
+    .withMessage("La descripcion debe tener entre 10 y 200 caracteres"),
 ];
+
+export const getOneAppliance = [];
