@@ -92,8 +92,8 @@ export const createApplianceValidations = [
     .trim()
     .isString()
     .withMessage("La descripcion debe ser un string")
-    .isLength({ min: 10, max: 200 })
-    .withMessage("La descripcion debe tener entre 10 y 200 caracteres"),
+    .isLength({ min: 10, max: 2000 })
+    .withMessage("La descripcion debe tener entre 10 y 2000 caracteres"),
 ];
 
 export const getOneAppliance = [];
